@@ -1,0 +1,4 @@
+{
+    "/":"InicioController@index",
+    "/cadastrar":"UsuarioController@cadastrar"
+}
