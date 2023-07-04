@@ -16,7 +16,7 @@
         private function conecta(){
             try
             {
-                return $conexao = new PDO("mysql:host=$this->servidor;dbname=$this->banco", $this->usuario, $this->senha);
+        return $conexao = new PDO("mysql:host=".$this->servidor.";"."dbname=".$this->banco, $this->usuario, $this->senha);
             }
             catch(Exception $e){
                 return "ERRO DE CONEXÃO ->".$e;
@@ -32,7 +32,7 @@
                     return "Erro conexão inesperado!  -> Models->BancoDeDados";
                 }
                 /** @var PDO */
-                $pdo = $resultado->value;
+                $pdo = $resultado;
                 $prepara = $pdo->prepare($sql);
                 $executa = $prepara->execute($paramametros);
 
