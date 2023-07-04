@@ -7,5 +7,7 @@
 </head>
 <body>
     <h1>Bem-vindo!</h1>
+    <a href="cadastrar">cadastrar<a>
+    <a href="logar">logar</a>
 </body>
 </html>
