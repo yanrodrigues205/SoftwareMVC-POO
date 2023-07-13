@@ -31,9 +31,17 @@ class Usuario{
 
     public function cadastro($conexao){
         $sql = "INSERT INTO usuarios (id_us, nome_us, email_us, senha_us, criacao_us, tipo_us) VALUES (? ,? ,? ,? ,? ,?)";
-        $param = [$this->id , $this->nome, $this->email, $this->senha, $this->data, 0];
+        $param = [$this->id , $this->nome, $this->email, md5($this->senha), $this->data, 0];
 
         $retorno = $conexao->executar($sql, $param);
+        return $retorno;
+    }
+
+    public function buscar($conexao){
+        $sql = "SELECT id_us, nome_us, email_us FROM usuarios WHERE email_us =? AND senha_us=? ";
+        $param = [$this->email, md5($this->senha)];
+        
+        $retorno = $conexao->executar_retornar($sql, $param);
         return $retorno;
     }
 }

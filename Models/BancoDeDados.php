@@ -49,5 +49,33 @@
                 return $err;
             }
         }
+
+        public function executar_retornar($sql, $parametros = []){
+            try
+            {
+                $resultado = $this->conecta();
+                if(!$resultado){
+                    return "Erro conexão inesperado!  -> Models->BancoDeDados";
+                }
+                $pdo = $resultado;
+                $prepara = $pdo->prepare($sql);
+                $executa = $prepara->execute($parametros);
+
+                if($executa == false){
+                    return "Erro na passagem dos parametros!";
+                }else{
+                    return $prepara->fetch();
+                }
+
+            }
+            catch(PDOException $e)
+            {
+                $err = "Não conseguiu executar o comando SQL! GRAVE".$e;
+                return $err;
+            }
+        }
+
+
+
     }
 ?>

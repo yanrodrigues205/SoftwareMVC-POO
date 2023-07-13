@@ -1,13 +1,21 @@
 <?php
-
-require_once dirname(__FILE__, 2)."./Models/Sessao.php";
 require_once dirname(__FILE__, 2)."/Models/Token.php";
 
 class AuthenticaController{
 
-    public function teste(){
+    public function verificacao($token){
         $tk = new Token();
-        return $tk->gerar_token("462", "Yan Pablo Rodrigues", "yan.pablo205@gmail.com");
+        return $tk->verifica_token($token);
+    }
+
+
+
+
+
+    private  function iniciar_sessao($id, $nome, $email){
+        $tk = new Token();
+        return $tk->gerar_token($id, $nome, $email);
+
     }
 }
 

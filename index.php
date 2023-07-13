@@ -22,7 +22,7 @@ $rotas = json_decode($rotasJson, true);
 if($rotas === null){
     die("Não existe nenhuma rotas no arquivo JSON!");
 }else{
-    echo "<h4>Já existem rotas no JSON!</h4>";
+    //echo "<h4>Já existem rotas no JSON!</h4>";
 }
 
 $url_inicial = str_replace('/index.php', '', $_SERVER['SCRIPT_NAME']);
@@ -33,10 +33,10 @@ if($url_inicial != $uri_sembarra && substr($uri_requisitada, -1) == '/'){
     $url = pegaURL();
     header("Location: ".$url.$uri_sembarra);
 }
-echo $uri_requisitada."<br>";
+//echo $uri_requisitada."<br>";
 $host = $_SERVER['HTTP_HOST'];
-echo $host."<br>";
-echo $_SERVER['SCRIPT_NAME']."<br>";
+//echo $host."<br>";
+//echo $_SERVER['SCRIPT_NAME']."<br>";
 
 $rotaEncontrada = null;
 $resultado_busca = [];
