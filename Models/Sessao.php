@@ -39,14 +39,14 @@ class Sessao
         }
         else
         {
-            return $_SESSION[$key] = null;
+            return $_SESSION[$chave] = null;
         }
     }
 
     private static function remover()
     {
-        unset($_SESSION[$key]);
-        session_destroy($_SESSION[$key]);
+        unset($_SESSION[$chave]);
+        session_destroy($_SESSION[$chave]);
     }
 
 }
