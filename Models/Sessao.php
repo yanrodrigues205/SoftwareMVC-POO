@@ -43,7 +43,7 @@ class Sessao
         }
     }
 
-    private static function remover()
+    private static function remover($chave)
     {
         unset($_SESSION[$chave]);
         session_destroy($_SESSION[$chave]);
