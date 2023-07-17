@@ -1,5 +1,5 @@
 <?php
-
+require_once "Token.php";
 class Sessao
 {
     private static $usuario_logado = null;
@@ -12,13 +12,27 @@ class Sessao
     }
 
     public function setarSessao($usuario){
-        if($usuario)
+        if($usuario && $id)
         {
-            Sessao::setar(Sessao::$usuario_logado, $usuario->pegarID());
-            return;
+           Sessao::setar($id, $usuario);
+           $sessao = Sessao::pegar($id);
+           if($sessao == false){
+            return false;
+
+           }else{
+            return $sessao;
+            
+
+           }
+
+           
+        }else{
+            //Sessao::remover(Sessao::$usuario_logado);
+           return "ERRO AO SETAR SESSÃO! 404";
+
+
         }
 
-        Sessao::remover(Sessao::$usuario_logado);
     } 
 
     private static function iniciar()
@@ -28,10 +42,10 @@ class Sessao
 
     private static function setar($chave, $valor)
     {
-        $_SESSION[$chave] = $valor;
+        $_SESSION["token_usuario"] = $valor;
     }
 
-    private static function pegar($chave)
+    public static function pegar($chave)
     {
         if(isset($_SESSION[$chave]))
         {
