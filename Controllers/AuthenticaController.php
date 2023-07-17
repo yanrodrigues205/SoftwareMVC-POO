@@ -1,22 +1,38 @@
 <?php
 require_once dirname(__FILE__, 2)."/Models/Token.php";
+require_once dirname(__FILE__, 2)."/Models/Sessao.php";
 
 class AuthenticaController{
 
-    public function verificacao($token){
+    public function verificacao(){
+        $sessao = new Sessao();
+        $busca_sessao = $sessao->buscaSessao();
         $tk = new Token();
-        return $tk->verifica_token($token);
+        $decodificar = $tk->verifica_token($busca_sessao);
+
+        if(!$decodificar){
+            header("location: logar");
+        }else{
+            
+        }
+
     }
 
 
 
 
-
-    private  function iniciar_sessao($id, $nome, $email){
+    public function iniciar_sessao($id, $nome, $email){
+        
         $tk = new Token();
-        return $tk->gerar_token($id, $nome, $email);
+        $token = $tk->gerar_token($id_us, $nome_us, $email_us);
+        $sessao = new Sessao();
+        $sessao_salva = $sessao->setarSessao($token); 
+        if($sessao_salva != false){
+            return true;
+        }
 
     }
+   
 }
 
 ?>

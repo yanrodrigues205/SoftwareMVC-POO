@@ -39,7 +39,7 @@ class Usuario{
 
     public function buscar($conexao){
         $sql = "SELECT id_us, nome_us, email_us FROM usuarios WHERE email_us =? AND senha_us=? ";
-        $param = [$this->email, md5($this->senha)];
+        $param = [$this->email, $this->senha];
         
         $retorno = $conexao->executar_retornar($sql, $param);
         return $retorno;

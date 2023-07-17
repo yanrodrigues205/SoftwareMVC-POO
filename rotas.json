@@ -2,5 +2,5 @@
     "/":"InicioController@index",
     "/cadastrar":"UsuarioController@cadastrar",
     "/logar": "UsuarioController@logar",
-    "/dashboard": "UsuarioController@logar"
+    "/dashboard": "MenuController@iniciar"
 }

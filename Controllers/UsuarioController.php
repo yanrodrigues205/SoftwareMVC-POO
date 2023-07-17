@@ -1,7 +1,9 @@
 <?php
+require_once "AuthenticaController.php";
 require_once "BancoController.php";
 require_once "Models/Usuario.php";
-require_once "Models/Token.php";
+
+
 class UsuarioController extends BancoController
 {
     public function logar(){
@@ -16,11 +18,25 @@ class UsuarioController extends BancoController
                 $id_us = $retorno['id_us'];
                 $nome_us = $retorno['nome_us'];
                 $email_us = $retorno['email_us'];
+                $sessao = new AuthenticaController();
+                
+                $sessao_start = $sessao->iniciar_sessao($id_us, $nome_us, $email_us);
+                
+                
+                if(!$sessao_start){
+                    $msg_retorno = "<br><center><strong style='color: red'>Erro ao logar!</strong></center>";
+                }else{
+                    
+                    header("location: dashboard");
+                    
+                    
+                   
+                    
 
-                $tk = new Token();
-                $token = $tk->gerar_token($id_us, $nome_us, $email_us);
+                }
 
-                $msg_retorno = "<br><center><strong style='color: green'>Logado com sucesso! id => ".$id_us."<br> nome_us => ".$email_us."<br><hr> TOKEN => ".$token." </strong><br></center>";
+
+               
 
             }else{
                 $msg_retorno = "<br><center><strong style='color: red'>Erro ao logar!</strong></center>";

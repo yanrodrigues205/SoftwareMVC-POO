@@ -2,7 +2,7 @@
 require_once "Token.php";
 class Sessao
 {
-    private static $usuario_logado = null;
+    private static $sessao = "token-us";
 
 
 
@@ -11,21 +11,13 @@ class Sessao
         Sessao::iniciar();
     }
 
-    public function setarSessao($usuario){
-        if($usuario && $id)
+    public function setarSessao($token){
+        if($token)
         {
-           Sessao::setar($id, $usuario);
-           $sessao = Sessao::pegar($id);
-           if($sessao == false){
-            return false;
-
-           }else{
-            return $sessao;
-            
-
-           }
-
-           
+           Sessao::setar($sessao, $token);
+           $deu_certo = Sessao::pegar($sessao);
+            return $deu_certo;
+               
         }else{
             //Sessao::remover(Sessao::$usuario_logado);
            return "ERRO AO SETAR SESSÃO! 404";
@@ -35,6 +27,10 @@ class Sessao
 
     } 
 
+    public function buscaSessao(){
+        return Sessao::pegar($sessao);
+    }
+
     private static function iniciar()
     {
         session_start();
@@ -42,7 +38,7 @@ class Sessao
 
     private static function setar($chave, $valor)
     {
-        $_SESSION["token_usuario"] = $valor;
+        $_SESSION[$chave] = $valor;
     }
 
     public static function pegar($chave)
@@ -53,14 +49,14 @@ class Sessao
         }
         else
         {
-            return $_SESSION[$key] = null;
+            return false;
         }
     }
 
-    private static function remover()
+    private static function remover($chave)
     {
-        unset($_SESSION[$key]);
-        session_destroy($_SESSION[$key]);
+        unset($_SESSION[$chave]);
+        session_destroy($_SESSION[$chave]);
     }
 
 }
