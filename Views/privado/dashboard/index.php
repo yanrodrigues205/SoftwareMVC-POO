@@ -8,6 +8,6 @@
 </head>
 <body>
     <h1>privada</h1>
-    <h5><?php var_dump($retorno1); ?></h5>
+    <h5><?php echo "Bem-Vindo ".$dados_usuario->nome." ficamos felizes com sua presença";?></h5>
 </body>
 </html>

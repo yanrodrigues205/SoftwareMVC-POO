@@ -13,7 +13,7 @@ class AuthenticaController{
         if(!$decodificar){
             header("location: logar");
         }else{
-            
+            return $decodificar;
         }
 
     }
@@ -24,7 +24,7 @@ class AuthenticaController{
     public function iniciar_sessao($id, $nome, $email){
         
         $tk = new Token();
-        $token = $tk->gerar_token($id_us, $nome_us, $email_us);
+        $token = $tk->gerar_token($id, $nome, $email);
         $sessao = new Sessao();
         $sessao_salva = $sessao->setarSessao($token); 
         if($sessao_salva != false){
