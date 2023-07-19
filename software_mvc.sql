@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19-Jul-2023 às 02:07
+-- Tempo de geração: 19-Jul-2023 às 02:35
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -31,9 +31,17 @@ CREATE TABLE `produtos` (
   `id_pro` int(11) NOT NULL,
   `titulo_pro` varchar(300) NOT NULL,
   `descricao_pro` varchar(500) NOT NULL,
+  `valor_pro` varchar(20) NOT NULL,
   `quantidade_pro` int(11) NOT NULL,
   `tipo_tipo` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `produtos`
+--
+
+INSERT INTO `produtos` (`id_pro`, `titulo_pro`, `descricao_pro`, `valor_pro`, `quantidade_pro`, `tipo_tipo`) VALUES
+(1, 'Isca de Pesca 30cm peixe-lambari', 'Isca artificial de peixe labari com aproxima', '127.90', 10, 'Pescav');
 
 -- --------------------------------------------------------
 
@@ -96,6 +104,12 @@ ALTER TABLE `usuarios`
 --
 -- AUTO_INCREMENT de tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `produtos`
+--
+ALTER TABLE `produtos`
+  MODIFY `id_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `tipos_produtos`
