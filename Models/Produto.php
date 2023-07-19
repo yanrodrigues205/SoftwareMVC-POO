@@ -19,11 +19,13 @@ class Produto{
     }
 
     public function cadastrar($conexao){
-        $sql = "";
-        $param = [];
+        $sql = "INSERT INTO `produtos`(`titulo_pro`, `descricao_pro`, `quantidade_pro`, `tipo_tipo`) VALUES (?,?,?,?,?)";
+        $param = [$this->titulo, $this->descricao,$this->quantidade, $this->quantidade, $this->tipo];
         $retorno = $conexao->executar($sql, $param);
         return $retorno;
     }
+
+    
 
 }
 ?>

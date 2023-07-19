@@ -12,7 +12,7 @@ class UsuarioController extends BancoController
         $conexao = $this->conexaoBD();
         
         if(!empty($_POST['email']) || !empty($_POST['senha'])){
-            $usuario = new Usuario("","", $_POST['email'], $_POST['senha'], "");
+            $usuario = new Usuario("","", $_POST['email'], md5($_POST['senha']), "");
             $retorno = $usuario->buscar($conexao);
             if($retorno != "" && !empty($retorno)){
                 $id_us = $retorno['id_us'];

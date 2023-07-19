@@ -9,5 +9,7 @@
 <body>
     <h1>privada</h1>
     <h5><?php echo "Bem-Vindo ".$dados_usuario->nome." ficamos felizes com sua presença";?></h5>
+    <br>
+    <a href="produto_cadastrar">Cadastrar Produtos</a>
 </body>
 </html>

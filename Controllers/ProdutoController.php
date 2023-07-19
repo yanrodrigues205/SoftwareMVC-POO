@@ -10,6 +10,12 @@
 
         }
 
+        public function cadastrar(){
+            $view_caminho = "./Views/privado/produtos/cadastrar.php";
+            include_once $view_caminho;
+
+        }
+
         
 
     }
