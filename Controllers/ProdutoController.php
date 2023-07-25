@@ -28,6 +28,10 @@
 
         }
 
+        public function buscar($conexao){
+
+        }
+
         
 
     }

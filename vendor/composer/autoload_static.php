@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInit259dca2f5d0ddba175247cb02210e53f
 {
     public static $prefixLengthsPsr4 = array (
+        'M' => 
+        array (
+            'Mpdf\\QrCode\\' => 12,
+        ),
         'F' => 
         array (
             'Firebase\\JWT\\' => 13,
@@ -14,6 +18,10 @@ class ComposerStaticInit259dca2f5d0ddba175247cb02210e53f
     );
 
     public static $prefixDirsPsr4 = array (
+        'Mpdf\\QrCode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mpdf/qrcode/src',
+        ),
         'Firebase\\JWT\\' => 
         array (
             0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
